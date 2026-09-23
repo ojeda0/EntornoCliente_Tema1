@@ -247,4 +247,25 @@ function ternario2() {
     console.log("El precio final junto al envío es de: " + precio);
 
 }
-ternario2();
+//ternario2();
+
+
+//Crea un programa que calcule un número aleatorio y pida al usuario
+//números hasta que lo acierte. Si el numero de intentos es superior a 10
+// pintará por pantalla ¡Has perdido! y ¡Has ganado! si es inferior.
+
+function numeroAleatorio(){
+    let numeroGenerado = Math.floor(Math.random()*100 + 1);
+    let intentos = 0;
+
+    do{
+
+        var numeroIntroducido = parseInt(window.prompt("He pensado un número del 0 al 100, ¡intenta adivinarlo!: "));
+        intentos++;
+
+    }while(intentos <= 10 && numeroIntroducido != numeroGenerado);
+
+    numeroIntroducido == numeroGenerado ? console.log("¡Has ganado en " + intentos + " intentos!" + " El número era: " + numeroGenerado) : console.log("¡Has perdido y has hecho " + intentos + " intentos!" + " El número era: " + numeroGenerado);
+
+}
+numeroAleatorio();
