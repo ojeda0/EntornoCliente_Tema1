@@ -106,7 +106,7 @@ function potencia(base, exponente) {
 
 let base = 2;
 let exponente = 3;
-console.log(`El resultado de ${base}^${exponente} es: ${potencia(base, exponente)}`);
+//console.log(`El resultado de ${base}^${exponente} es: ${potencia(base, exponente)}`);
 
 
 //Ejercicio 8: Más bucles, solicita numero y muestra el acumulado de 10 en 10.
@@ -123,7 +123,7 @@ function sumaDiez(numVueltas) {
 function ejemplo8(){
     console.log("Ejercicio 8: " + sumaDiez(50));
 }
-ejemplo8();
+//ejemplo8();
 
 
 //Ejercicio 9: Mas bucles, solicita numero y muestra el acumulado de 10 en 10. Da
@@ -173,32 +173,78 @@ function calculadora(){
         case 'a':
             //Suma
             resultado = operando1 + operando2;
+            console.log(resultado);
             break;
         case 'b':
             //Resta
             resultado = operando1 - operando2;
+            console.log(resultado);
             break;
         case 'c':
             //Multiplicación
             resultado = operando1 * operando2;
+            console.log(resultado);
             break;
         case 'd':
             //División
-            resultado = operando1 / operando2;
+            if(operando2 == 0) {
+                console.error("No se puede dividir entre 0.");
+            }else {
+                resultado = operando1 / operando2;
+                console.log(resultado);
+            }
             break;
         case 'e':
             //Potencia
             resultado = potencia(operando1, operando2);
+            console.log(resultado);
             break;
         case 'f':
             //Salir
             salir = true;
+            console.log("¡Hasta luego! Gracias por usar nuestra calculadora.");
             break;
         }
-
-        console.log(resultado);
 
     }while(!salir)
 
 }
-calculadora();
+//calculadora();
+
+
+//Ejemplo ternario
+function ternario() {
+
+    let precio = 150;
+    console.log("Precio original: " + precio);
+
+    let edad = parseInt(window.prompt("Introduce tu edad: "));
+
+    // if(edad >= 18) {
+    //     precio *= 0.80;
+    // }else{
+    //     precio *= 0.75;
+    // }
+
+    precio = (edad >= 18) ? precio*0.80 : precio*0.75;
+
+    console.log("El precio tras el descuento es: " + precio);
+
+}
+//ternario();
+
+
+//Ejemplo ternario práctica: pedir por pantalla precio del producto, si es superior a 50€ el envío sale gratis sino 5€. El sistema debe mostrar
+//al principio el precio original y al final el precio total
+
+function ternario2() {
+
+    let precio = parseInt(window.prompt("Introduce el precio del producto: "));
+    console.log("Precio original: " + precio);
+
+    precio = (precio > 50) ? precio : precio+5;
+
+    console.log("El precio final junto al envío es de: " + precio);
+
+}
+ternario2();
