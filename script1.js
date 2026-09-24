@@ -268,4 +268,120 @@ function numeroAleatorio(){
     numeroIntroducido == numeroGenerado ? console.log("¡Has ganado en " + intentos + " intentos!" + " El número era: " + numeroGenerado) : console.log("¡Has perdido y has hecho " + intentos + " intentos!" + " El número era: " + numeroGenerado);
 
 }
-numeroAleatorio();
+//numeroAleatorio();
+
+
+//Ejemplo 14: Pide números hasta introducir el 0 y pinta por pantalla
+// el menor, el mayor y la media
+function ejemplo14() {
+
+    let numeroIntroducido;
+    let numeroMenor = Infinity;
+    let numeroMayor = -Infinity;
+    let media = 0;
+    let contador = 0;
+
+    do{
+        numeroIntroducido = parseInt(window.prompt("Introduce números para saber el menor, el mayor y la media. Pulsa 0 para salir: "));
+
+        if(numeroIntroducido != 0){
+            contador++;
+            media += numeroIntroducido;
+            numeroMayor = numeroMayor > numeroIntroducido ? numeroMayor : numeroIntroducido;
+            numeroMenor = numeroMenor < numeroIntroducido ? numeroMenor : numeroIntroducido;
+        }
+
+    }while(numeroIntroducido != 0);
+
+    console.log("El número menor es: " + numeroMenor);
+    console.log("El número mayor es: " + numeroMayor);
+    console.log("La media es: " + media/contador);
+
+}
+//ejemplo14();
+
+
+//Ejemplo 15: Pide una nota numérica y muestra por pantalla si es
+// suspenso (0-4), suficiente (5), bien (6), notable(7-8), sobresaliente(9-10)
+function ejemplo15(){
+
+    let nota = parseInt(window.prompt("Introduce tu nota del examen: "));
+    let notaTexto = "";
+
+    switch(true){
+        case nota >= 0 && nota < 5:
+            notaTexto = "Suspenso";
+            break;
+        case nota >= 5 && nota < 6:
+            notaTexto = "Suficiente";
+            break;
+        case nota >= 6 && nota < 7:
+            notaTexto = "Bien";
+            break;
+        case nota >= 7 && nota < 9:
+            notaTexto = "Notable";
+            break;
+        case nota >= 9 && nota <= 10:
+            notaTexto = "Sobresaliente";
+            break;
+        default:
+            notaTexto = "Nota fuera de rango, introduce un nota del 0 al 10.";
+            break;
+    }
+
+    console.log("Nota: " + nota + " = " + notaTexto);
+
+}
+//ejemplo15();
+
+
+//Ejemplo 16: Pide un número por pantalla y muestra el número de digitos que tiene
+function ejemplo16() {
+
+    let numero = parseInt(window.prompt("Introduce un número para contar sus dígitos: "));
+    let digitos = 0;
+    let numeroCopia = numero;
+
+    do{
+        numero /= 10;
+        digitos++;
+    }while(numero > 1)
+
+    console.log(`El número ${numeroCopia} tiene ${digitos} dígitos.`);
+
+}
+//ejemplo16();
+
+
+//Ejemplo 17: Calcula el factorial de un número solicitado por pantalla siempre y cuando este
+//número sea positivo y par
+function ejemplo17() {
+
+    let numero = parseInt(window.prompt("Introduce un número positivo y par para saber su factorial: "));
+    let conteo = 1;
+
+    if(numero > 0 && numero%2==0){
+
+        for(let i=2;i<=numero; i++){
+            conteo *= i;
+        }
+        console.log(`El factorial`);
+
+    }
+
+
+
+}
+ejemplo17();
+
+
+//Ejemplo 18: Pide un número por pantalla e imprimero invertido
+
+
+
+//Ejemplo 19: Muestra todos los divisores de un numero solicitado por pantalla
+
+
+
+//Ejemplo 20: Numero perfecto: Pide un numero y determina si es perfecto.
+//Un numero es perfecto cuando la suma de sus divisores propios sea igual al propio num.
