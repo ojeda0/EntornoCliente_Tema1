@@ -369,19 +369,62 @@ function ejemplo17() {
 
     }
 
+}
+//ejemplo17();
 
+
+//Ejemplo 18: Pide un número por pantalla e imprimelo invertido
+function ejemplo18(){
+    let num = parseInt(window.prompt("Introduce un numero"));
+    let num_inv = 0;
+
+    while(num > 0){
+        num_inv = num_inv * 10 + (num % 10);
+        num = Math.floor(num/10);
+    };
+
+    console.log("El numero invertido es: " + num_inv);
 
 }
-ejemplo17();
-
-
-//Ejemplo 18: Pide un número por pantalla e imprimero invertido
-
+//ejemplo18();
 
 
 //Ejemplo 19: Muestra todos los divisores de un numero solicitado por pantalla
+function ejemplo19(){
+    const numero = parseInt(window.prompt("Introduce un número:"));
 
+    for(let i = 0; i <= numero; i++) {
+        if(numero % i == 0) {
+            console.log(i);
+        }
+    }
+
+}
+//ejemplo19();
 
 
 //Ejemplo 20: Numero perfecto: Pide un numero y determina si es perfecto.
 //Un numero es perfecto cuando la suma de sus divisores propios sea igual al propio num.
+function ejemplo20(){
+    const numero = parseInt(window.prompt("Introduce un número:"));
+    let sumaNumeros = 0;
+
+    console.log("Divisores de " + numero + ":");
+
+    for(let i = 0; i < numero; i++) {
+        if(numero % i == 0) {
+            console.log(i);
+            sumaNumeros += i;
+        }
+    }
+
+    console.log("La suma de estos divisores es de: " + sumaNumeros);
+
+    if(sumaNumeros==numero) {
+        console.log("¡El número " + numero + " es un número perfecto!");
+    }else{
+        console.log("El número " + numero + " NO es un número perfecto.");
+    }
+
+}
+//ejemplo20();
