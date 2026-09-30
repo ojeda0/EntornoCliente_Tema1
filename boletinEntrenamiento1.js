@@ -132,6 +132,58 @@ function ej8(){
 // EJ 9. Número positivo, negativo o cero. Dado un número, 
 // indica si es positivo, negativo o igual a cero.
 function ej9(){
+    let numero = parseFloat(window.prompt("Introduce un número:"));
+
+    if(numero < 0){
+        console.log(`¡El ${numero} es un número negativo!`);
+    }else if(numero==0){
+        console.log(`¡El ${numero} es un cero!`);
+    }else{
+        console.log(`¡El ${numero} es un número positivo!`);
+    }
 
 }
-ej9();
+//ej9();
+
+
+// EJ 10. Número mayor. Dados dos números, muestra cuál de ellos 
+// es mayor o indica si son iguales.
+function ej10(){
+    let numero1 = parseFloat(window.prompt("Introduce el primer número:"));
+    let numero2 = parseFloat(window.prompt("Introduce el segundo número:"));
+
+    if(numero1 > numero2){
+        console.log(`El número ${numero1} es mayor que el número ${numero2}.`);
+    }else if(numero1==numero2){
+        console.log(`El número ${numero1} y el número ${numero2} son iguales.`);
+    }else{
+        console.log(`El número ${numero2} es mayor que el número ${numero1}.`);
+    }
+}
+//ej10();
+
+
+//EJ 11. Calificación. Dada una nota entre 0 y 10, muestra si 
+// corresponde a un suspenso, aprobado, notable o sobresaliente.
+function ej11(){
+    let nota = parseFloat(window.prompt("Introduce tu nota:"));
+
+    switch(true){
+        case(nota >=0 && nota < 5):
+            console.log(`Suspenso.`);
+            break;
+        case(nota >= 5 && nota < 7):
+            console.log(`Aprobado.`);
+            break;
+        case(nota >= 7 && nota < 9):
+            console.log(`Notable.`);
+            break;
+        case(nota >= 9 && nota <= 10):
+            console.log(`Sobresaliente.`);
+            break;
+        default:
+            console.log(`Introduce una nota válida.`);
+            break;
+    }
+}
+//ej11();
