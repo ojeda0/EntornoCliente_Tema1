@@ -378,3 +378,194 @@ function calcularArea(base, altura){
     );
 }
 //ej21();
+
+
+// EJ 31. Sistema de calificaciones. Crea un programa que permita 
+// introducir las notas de un alumno. El programa deberá solicitar
+//  inicialmente el número de notas que se van a introducir y, 
+// mediante un bucle, solicitar cada una de ellas. Utiliza 
+// funciones para calcular la nota media y determinar la 
+// calificación final: Suspenso, Aprobado, Notable o 
+// Sobresaliente. Comprueba que las notas introducidas estén 
+// comprendidas entre 0 y 10.
+function ej31() {
+
+    let numNotas = parseInt(window.prompt("Introduce el número de notas que vas a introducir:"));
+    let acumulador = 0;
+
+    for(let i = 1; i <= numNotas; i++) {
+        let nota = parseFloat(window.prompt(`Introduce la ${i} nota:`));
+        acumulador += nota;
+    }
+
+    const notaFinal = acumulador / numNotas;
+    console.log(notaFinal);
+    console.log(calificacion(notaFinal));
+}
+//ej31();
+
+function calificacion(nota){
+    let result;
+
+    switch(true) {
+        case nota >= 0 && nota < 5:
+            result = "SUSPENSO.";
+            break;
+        case nota >= 5 && nota < 6:
+            result = "APROBADO.";
+            break;
+        case nota >= 6 && nota < 7:
+            result = "BIEN.";
+            break;
+        case nota >= 7 && nota < 9:
+            result = "NOTABLE.";
+            break;
+        case nota >= 9 && nota <= 10:
+            result = "SOBRESALIENTE.";
+            break;
+        default:
+            result = "Introduce una nota válida entre 0 y 10.";
+    }
+
+    return result;
+
+}
+
+
+// EJ 32. Cajero automático. Simula el funcionamiento de un 
+// cajero automático. El usuario comienza con un saldo 
+// determinado y puede consultar su saldo, retirar dinero, 
+// ingresar dinero o salir. Crea una función para cada operación 
+// y utiliza un menú que se repita hasta seleccionar la opción 
+// de salida. El programa deberá impedir retirar una cantidad 
+// superior al saldo disponible y cantidades negativas o 
+// iguales a cero.
+function ej32() {
+
+    let saldo = 1000.0;
+    let opcion;
+
+    do{
+        opcion = parseInt(window.prompt("Introduce una opción:\n"
+            + "1. Consultar saldo.\n"
+            + "2. Retirar dinero.\n"
+            + "3. Ingresar dinero.\n"
+            + "4. Salir.\n"
+        ));
+
+        switch(opcion){
+            case 1:
+                console.log(`Su saldo actual es ${saldo}.`);
+                break;
+            case 2:
+                const retirar = parseFloat(window.prompt("Introduce la cantidad a retirar:"));
+                saldo = retirarDinero(saldo, retirar);
+                break;
+            case 3:
+                //Ingresar dinero
+                const ingresar = parseFloat(window.prompt("Introduce la cantidad a ingresar:"));
+                saldo = ingresarDinero(saldo, ingresar);
+                break;
+            case 4:
+                //Salir
+                console.log("Gracias por usar nuestro programa.");
+                break;
+            default:
+                console.log("Introduce una opción válida.");
+                break;
+        }
+
+    }while(opcion != 4);
+}
+//ej32();
+
+function retirarDinero(saldo, retirar){
+
+    let result = saldo;
+
+    if(saldo < retirar) {
+        console.error("No se puede retirar más dinero del que hay.");
+    }else if(retirar <= 0){
+        console.error("Debes retirar una cantidad positiva.");
+    }else if(isNaN(retirar)){
+        console.error("Debes introducir una cantidad válida.");
+    }else {
+        result = saldo - retirar;
+    }
+
+    return result;
+}
+
+function ingresarDinero(saldo, ingresar){
+    
+    let result = saldo;
+
+    if(ingresar <= 0){
+        console.error("Debes ingresar una cantidad positiva.");
+    }else if(isNaN(ingresar)){
+        console.error("Debes ingresar una cantidad válida.");
+    }else {
+        result = saldo + ingresar;
+    }
+
+    return result;
+
+}
+
+
+// EJ 33. Juego de adivinanza. Crea un juego en el que el 
+// programa genere un número aleatorio entre 1 y 100 y el 
+// usuario tenga que adivinarlo. Después de cada intento, el 
+// programa indicará si el número introducido es mayor o menor 
+// que el número secreto. El juego deberá contar el número de 
+// intentos y finalizar cuando el jugador acierte. Organiza 
+// el programa utilizando funciones.
+function ej33(){
+    let numeroAdivinar = numAleatorio();
+    let intentos = 0;
+    let acertado = false;
+
+    let numero;
+
+    do{
+        numero = parseInt(window.prompt("¡Introduce un número del 1 al 100 a ver si lo adivinas!\n" +
+            "Usa el número 0 para salir del programa.\n"
+        ));
+
+        if(numero === numeroAdivinar){
+            intentos++;
+            console.log(`¡Has ganado! El número era ${numeroAdivinar}.\n`
+                + `Número de intentos: ${intentos}.\n`
+            );
+            acertado = true;
+        }else if(isNaN(numero)){
+            console.error("Debes introducir un número.");
+        }else if(numero === 0){
+            console.error("¡Has parado de adivinar!");
+        }else if(numero < 0 || numero > 100){
+            console.error("Debes introducir un número entre el 1 y el 100 o el 0 para salir.");
+        }else if(numero < numeroAdivinar){
+            intentos++;
+            console.log("El número introducido es MENOR que el que tienes que adivinar.");
+        }else if(numero > numeroAdivinar){
+            intentos++;
+            console.log("El número introducido es MAYOR que el que tienes que adivinar.");
+        }
+
+    }while(!acertado && numero !== 0);
+
+}
+//ej33();
+
+function numAleatorio(){
+    return parseInt(Math.floor(Math.random()*100 + 1));
+}
+
+
+// EJ 34. Conversor de unidades. Crea un programa que permita 
+// convertir diferentes unidades. El usuario podrá elegir entre 
+// convertir kilómetros a millas, grados Celsius a Fahrenheit, 
+// kilogramos a libras o euros a dólares. Utiliza un menú, una 
+// función para cada conversión y una estructura de repetición 
+// que permita realizar varias conversiones hasta seleccionar 
+// la opción de salir.

@@ -141,4 +141,4 @@ function ej6(){
     console.log(`¡Has visitado la página ${contador} veces!`);
     //localStorage.clear();
 }
-ej6();
+//ej6();
